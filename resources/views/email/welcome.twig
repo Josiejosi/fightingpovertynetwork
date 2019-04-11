@@ -1,0 +1,13 @@
+{% extends "email.twig" %}
+
+{% block content %}
+
+	Hi {{ user.name }} {{ user.surname }},
+
+	<br><br>Thank you for joining <a href="{{ app_url }}">MYPETTYCASH</a>, 
+
+	<br>Your login email-address: {{ user.email }}
+
+	<br><br>Referral Link: <a href="{{ app_url }}/register/{{ user.referral_code }}">{{ app_url }}/register/{{ user.referral_code }}</a> 
+
+{% endblock %}
