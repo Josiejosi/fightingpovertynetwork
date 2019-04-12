@@ -1,16 +1,17 @@
-{% extends "master.twig" %}
+{% extends "front.twig" %}
 
 {% block content %}
 
-	<div class="row">
-		<div class="col-sm-6 col-sm-offset-3">
-			<div class="panel panel-default">
+<section class="services-page">
+    <div class="layer">
+        <div class="container">
+			<div class="card-body">
 
-				<div class="panel-heading">
+				<div class="card-header">
 					<h4>Contact US</h4>
 				</div>
 
-				<div class="panel-body">
+				<div class="card-body">
 				
 					<form action="{{ base_url() }}/contact_us" method="POST" class="form-horizontal" role="form" autocomplete="off">
 
@@ -91,5 +92,7 @@
 			</div>
 		</div>
 	</div>
+
+</section>
 
 {% endblock %}

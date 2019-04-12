@@ -1,0 +1,210 @@
+{% extends "front.twig" %}
+
+{% block content %}
+<section class="banner">
+    <div class="container" data-aos="fade-up" data-aos-duration="1000">
+        <h1>WE ARE THE FIGHTING POVERTY NETWORK</h1>
+        <h6>MAKING MONEY TOGETHER IS THE PRIMARY GOAL</h6>
+        <h6>R200 Once Off Joining Fee</h6>
+        <p>Feeder 2x2 Matrix (Invite 2 people & teach them to do the same)</p>
+        <a href="/register" class="get-started-btn">get started</a>
+    </div>
+</section>
+
+<section class="index-about-sec">
+    <div class="layer">
+        <div class="container">
+            <p data-aos="zoom-in" data-aos-duration="1000">
+                <strong>Poverty</strong> means not having enough money for
+                basic needs like food, shelter and clothing.
+                Debt is also the biggest driver poverty
+            </p>
+            <ul class="row">
+                <li class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-duration="1000">
+                    <div class="index-abt-content">
+                        <h3>LEVEL 1</h3>
+                        <p>
+                            Donate: R200<br>
+                            Get R200x2 = R400<br>
+                            Upgrade R400<br>
+                            Profit R0
+                        </p>
+                    </div>
+                </li>
+                <li class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-duration="1200">
+                    <div class="index-abt-content">
+                        <h3>LEVEL 2</h3>
+                        <p>
+                            Donate R400<br>
+                            Get R400x4= R1600<br>
+                            Upgrade R800<br>
+                            Profit R800
+                        </p>
+                    </div>
+                </li>
+                <li class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-duration="1400">
+                    <div class="index-abt-content">
+                        <h3>LEVEL 3</h3>
+                        <p>
+                            Donate R800<br>
+                            Get R800x8 =R6400<br>
+                            Upgrade R1600<br>
+                            Profit R4800
+                        </p>
+                    </div>
+                </li>
+                <li class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-duration="1600">
+                    <div class="index-abt-content">
+                        <h3>LEVEL 4</h3>
+                        <p>
+                            Donate R1600<br>
+                            Get R1600X16<br>
+                            Upgrade 0<br>
+                            Profit R25600
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="index-blog">
+    <div class="layer">
+        <div class="container">
+            <h3 data-aos="zoom-in" data-aos-duration="1000">Compensation Plan</h3>
+
+            <div class="row"  data-aos="zoom-out" data-aos-duration="1000">
+
+            <table class="table table-responsive">
+                <thead>
+                    <tr>
+                        <th style="color: red;">LEVEL</th>
+                        <th style="color: red;">PAY</th>
+                        <th style="color: red;">RECEIVE</th>
+                        <th style="color: red;">UPGRADE</th>
+                        <th style="color: red;">PROFIT</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="color: white;">1</td>
+                        <td style="color: white;">R200</td>
+                        <td style="color: white;">R200 X 2 = R400</td>
+                        <td style="color: white;">R200</td>
+                        <td style="color: white;">0</td>
+                    </tr>
+                    <tr>
+                        <td style="color: white;">2</td>
+                        <td style="color: white;">R400</td>
+                        <td style="color: white;">R400 X 4 = R1600</td>
+                        <td style="color: white;">R800</td>
+                        <td style="color: white;">R800</td>
+                    </tr>
+                    <tr>
+                        <td style="color: white;">3</td>
+                        <td style="color: white;">R800</td>
+                        <td style="color: white;">R800 X 8 = R6400</td>
+                        <td style="color: white;">R1600</td>
+                        <td style="color: white;">R4800</td>
+                    </tr>
+                    <tr>
+                        <td style="color: white;">4</td>
+                        <td style="color: white;">R1600</td>
+                        <td style="color: white;">R1600 X 16 = R25 600</td>
+                        <td style="color: white;">0</td>
+                        <td style="color: white;">R25 600</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="index-contact">
+    <div class="layer">
+        <div class="container">
+            <h3 data-aos="zoom-in" data-aos-duration="1000">Need HELP Getting Started?</h3>
+
+                    <form action="{{ base_url() }}/contact_us" method="POST" class="form-horizontal" role="form" autocomplete="off">
+
+                        {{ csrf.field | raw }}
+                    
+                        <div class="form-group {{ errors.email ? ' has-error' : '' }}">
+                            <label class="control-label col-sm-4" for="email">Email Address :</label>
+                            <div class="col-sm-8">
+                                <input 
+                                    type="email" 
+                                    name="email" 
+                                    class="form-control" 
+                                    value="{{ old.email }}">
+                            </div>
+                            {% if ( errors.email ) %}   
+                                <span class="text-danger help-block text-center">{{ errors.email | first }}</span>
+                            {% endif %}                     
+                        </div>
+                    
+                        <div class="form-group {{ errors.name ? ' has-error' : '' }}">
+                            <label class="control-label col-sm-4" for="name">Name :</label>
+                            <div class="col-sm-8">
+                                <input type="text" name="name" id="name" class="form-control" value="{{ old.name }}" title="">
+                            </div>
+                            {% if ( errors.name ) %}    
+                                <span class="text-danger help-block text-center">{{ errors.name | first }}</span>
+                            {% endif %}                             
+                        </div>
+                    
+                        <div class="form-group {{ errors.surname ? ' has-error' : '' }}">
+                            <label class="control-label col-sm-4" for="surname">Surname :</label>
+                            <div class="col-sm-8">
+                                <input type="text" name="surname" id="surname" class="form-control" value="{{ auth.user.surname }}" title="">
+                            </div>
+                            {% if ( errors.surname ) %} 
+                                <span class="text-danger help-block text-center">{{ errors.surname | first }}</span>
+                            {% endif %}                             
+                        </div>
+                    
+                        <div class="form-group {{ errors.phone_number ? ' has-error' : '' }}">
+                            <label class="control-label col-sm-4" for="phone_number">Phone Number :</label>
+                            <div class="col-sm-8">
+                                <input type="text" name="phone_number" id="phone_number" class="form-control" value="{{ old.phone_number }}" title="">
+                            </div>
+                            {% if ( errors.phone_number ) %}    
+                                <span class="text-danger help-block text-center">{{ errors.phone_number | first }}</span>
+                            {% endif %}                             
+                        </div>
+                    
+                        <div class="form-group {{ errors.subject ? ' has-error' : '' }}">
+                            <label class="control-label col-sm-4" for="subject">Topic :</label>
+                            <div class="col-sm-8">
+                                <input type="text" name="subject" id="subject" class="form-control" value="{{ old.subject }}" title="">
+                            </div>
+                            {% if ( errors.subject ) %} 
+                                <span class="text-danger help-block text-center">{{ errors.subject | first }}</span>
+                            {% endif %}                             
+                        </div>
+                    
+                        <div class="form-group">
+                            <label class="control-label col-sm-4" for="subject">Message :</label>
+                            <div class="col-sm-8">
+                                <textarea name="subject" class="form-control" rows="6"></textarea>
+                            </div>                          
+                        </div>
+                    
+                
+                        <div class="form-group">
+                            <div class="col-sm-10 col-sm-offset-2">
+                                <button type="submit" class="btn btn-danger">Contact US</button>
+                            </div>
+                        </div>
+
+                    </form>
+            </form>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

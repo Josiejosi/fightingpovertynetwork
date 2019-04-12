@@ -122,6 +122,8 @@
 
 	//Binding routes to controllers
 	//
+	$container['FrontController'] 		= function( $container ) { return new \App\Controllers\FrontController( $container ) ; } ;
+	
 	$container['HomeController'] 		= function( $container ) { return new \App\Controllers\HomeController( $container ) ; } ;
 	$container['ContactController'] 	= function( $container ) { return new \App\Controllers\ContactController ( $container ) ; } ;
 	$container['ProfileController'] 	= function( $container ) { return new \App\Controllers\ProfileController( $container ) ; } ;
