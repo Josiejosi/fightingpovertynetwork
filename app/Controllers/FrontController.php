@@ -14,5 +14,17 @@
 
 		}
 
+		public function about( $request, $response ) {
+
+			$data 								= [
+
+				'title' 						=> 'Welcome to FPN',
+
+			] ;
+
+			return $this->view->render( $response, 'front/about.twig', $data );
+
+		}
+
 
 	}

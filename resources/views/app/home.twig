@@ -1,23 +1,155 @@
-{% extends "front.twig" %}
+{% extends "app.twig" %}
 
 {% block content %}
 
 	<div class="row">
-		<div class="col-sm-10 col-sm-offset-1">
-			<div class="panel panel-default">
 
-				<div class="panel-heading">
-					<h4>Welcome {{ auth.user.name }} {{ auth.user.surname }}</h4>
-				</div>
+	    <div class="col-lg-4 col-sm-6">
+	        <div class="card">
+	            <div class="content">
+	                <div class="row">
+	                    <div class="col-xs-5">
+	                        <div class="icon-big icon-warning text-center"> <i class="fas fa-wallet"></i> </div>
+	                    </div>
+	                    <div class="col-xs-7">
+	                        <div class="numbers"><p>SENT</p> R0.00</div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
 
-				<div class="panel-body">
-				
+	    <div class="col-lg-4 col-sm-6">
+	        <div class="card">
+	            <div class="content">
+	                <div class="row">
+	                    <div class="col-xs-5">
+	                        <div class="icon-big icon-success text-center"> <i class="fas fa-wallet"></i> </div>
+	                    </div>
+	                    <div class="col-xs-7">
+	                        <div class="numbers"><p>RECEIVED</p> R0.00</div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
 
+	    <div class="col-lg-4 col-sm-6">
+	        <div class="card">
+	            <div class="content">
+	                <div class="row">
+	                    <div class="col-xs-5">
+	                        <div class="icon-big icon-danger text-center"> <i class="fas fa-wallet"></i> </div>
+	                    </div>
+	                    <div class="col-xs-7">
+	                        <div class="numbers"><p>LEVEL</p> 1</div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+
+	</div>
+
+	<div class="row">
+
+		<div class="col-md-12">
+
+			<div class="card">
+
+				<div class="content">
+
+					<div class="card-header m-2"><h3>Dashboard</h3></div>
+
+					<div class="card-body m-2">
+
+						<div class="row">
+
+							<div class="col-md-8 col-md-offset-2">
+
+								<h3><trong>REFERRAL LINK: </trong><small>{{ base_url() }}/register/{{ auth.user.username }}</small></h3>
+
+								<hr>
+
+
+					
+								<button class="btn btn-primary btn-block btn-fill btn-lg">Upgrade</button>
+
+							</div>
+
+						</div>
+
+					</div>
 
 				</div>
 
 			</div>
+
 		</div>
+
+	</div>
+
+	<div class="row">
+
+		<div class="col-md-12">
+
+			<div class="card">
+
+				<div class="content">
+
+					<div class="card-header m-2"><h5>Recent Incoming</h5></div>
+
+					<div class="card-body m-2">
+
+						<div class="row">
+
+							<div class="col-sm-6 col-sm-offset-3">
+					
+								<h6 class="text-center">Nothing new mate!</h6>
+
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<div class="row">
+
+		<div class="col-md-12">
+
+			<div class="card">
+
+				<div class="content">
+
+					<div class="card-header m-2"><h5>Recent Outgoing</h5></div>
+					<div class="card-body m-2">
+
+						<div class="row">
+
+							<div class="col-sm-6 col-sm-offset-3">
+					
+								<h6 class="text-center">Nothing new mate!</h6>
+
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
 	</div>
 
 {% endblock %}

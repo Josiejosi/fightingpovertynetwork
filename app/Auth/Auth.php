@@ -12,7 +12,7 @@
 		public function attempt( $email, $password )
 		{
 			
-			$user = User::where( 'email', $email )->first() ;
+			$user = User::where( 'email', $email )->orWhere( 'username', $email )->first() ;
 
 			if ( !$user ) {
 

@@ -25,9 +25,9 @@
                         <h3>LEVEL 1</h3>
                         <p>
                             Donate: R200<br>
-                            Get R200x2 = R400<br>
+                            Get R200 x 2 = R400<br>
                             Upgrade R400<br>
-                            Profit R0
+                            Profit R400
                         </p>
                     </div>
                 </li>
@@ -36,7 +36,7 @@
                         <h3>LEVEL 2</h3>
                         <p>
                             Donate R400<br>
-                            Get R400x4= R1600<br>
+                            Get R400 x 4 = R1600<br>
                             Upgrade R800<br>
                             Profit R800
                         </p>
@@ -47,7 +47,7 @@
                         <h3>LEVEL 3</h3>
                         <p>
                             Donate R800<br>
-                            Get R800x8 =R6400<br>
+                            Get R800 x 8 = R6400<br>
                             Upgrade R1600<br>
                             Profit R4800
                         </p>
@@ -58,7 +58,7 @@
                         <h3>LEVEL 4</h3>
                         <p>
                             Donate R1600<br>
-                            Get R1600X16<br>
+                            Get R1600 X 16 = R25600<br>
                             Upgrade 0<br>
                             Profit R25600
                         </p>
@@ -134,8 +134,8 @@
                         {{ csrf.field | raw }}
                     
                         <div class="form-group {{ errors.email ? ' has-error' : '' }}">
-                            <label class="control-label col-sm-4" for="email">Email Address :</label>
-                            <div class="col-sm-8">
+                            <label class="control-label col-sm-4" style="color:#fff;" for="email">Email Address :</label>
+                            <div class="col-sm-12">
                                 <input 
                                     type="email" 
                                     name="email" 
@@ -148,8 +148,8 @@
                         </div>
                     
                         <div class="form-group {{ errors.name ? ' has-error' : '' }}">
-                            <label class="control-label col-sm-4" for="name">Name :</label>
-                            <div class="col-sm-8">
+                            <label class="control-label col-sm-4" style="color:#fff;" for="name">Name :</label>
+                            <div class="col-sm-12">
                                 <input type="text" name="name" id="name" class="form-control" value="{{ old.name }}" title="">
                             </div>
                             {% if ( errors.name ) %}    
@@ -158,8 +158,8 @@
                         </div>
                     
                         <div class="form-group {{ errors.surname ? ' has-error' : '' }}">
-                            <label class="control-label col-sm-4" for="surname">Surname :</label>
-                            <div class="col-sm-8">
+                            <label class="control-label col-sm-4" style="color:#fff;" for="surname">Surname :</label>
+                            <div class="col-sm-12">
                                 <input type="text" name="surname" id="surname" class="form-control" value="{{ auth.user.surname }}" title="">
                             </div>
                             {% if ( errors.surname ) %} 
@@ -168,8 +168,8 @@
                         </div>
                     
                         <div class="form-group {{ errors.phone_number ? ' has-error' : '' }}">
-                            <label class="control-label col-sm-4" for="phone_number">Phone Number :</label>
-                            <div class="col-sm-8">
+                            <label class="control-label col-sm-4" style="color:#fff;" for="phone_number">Phone Number :</label>
+                            <div class="col-sm-12">
                                 <input type="text" name="phone_number" id="phone_number" class="form-control" value="{{ old.phone_number }}" title="">
                             </div>
                             {% if ( errors.phone_number ) %}    
@@ -178,8 +178,8 @@
                         </div>
                     
                         <div class="form-group {{ errors.subject ? ' has-error' : '' }}">
-                            <label class="control-label col-sm-4" for="subject">Topic :</label>
-                            <div class="col-sm-8">
+                            <label class="control-label col-sm-4" style="color:#fff;" for="subject">Topic :</label>
+                            <div class="col-sm-12">
                                 <input type="text" name="subject" id="subject" class="form-control" value="{{ old.subject }}" title="">
                             </div>
                             {% if ( errors.subject ) %} 
@@ -188,8 +188,8 @@
                         </div>
                     
                         <div class="form-group">
-                            <label class="control-label col-sm-4" for="subject">Message :</label>
-                            <div class="col-sm-8">
+                            <label class="control-label col-sm-4" style="color:#fff;" for="subject">Message :</label>
+                            <div class="col-sm-12">
                                 <textarea name="subject" class="form-control" rows="6"></textarea>
                             </div>                          
                         </div>

@@ -87,7 +87,11 @@
 	        'cache' 				=> false,
 	    ]);
 	    // Instantiate and add Slim specific extension
-	    $router 					= $container->get('router');
+	    $router 					= $container->get('router') ;
+
+	    $request   					= $container['request'] ;
+		$url       					= $request->getUri() ;
+		$path       				= $url->getPath() ;
 
 	    $uri 						= \Slim\Http\Uri::createFromEnvironment( 
 	    	new \Slim\Http\Environment( $_SERVER ) 
@@ -115,6 +119,9 @@
 		$view->getEnvironment()->addGlobal( 'app_url', $container['settings']['app_url'] ) ;
 		$view->getEnvironment()->addGlobal( 'contact_details', $container['settings']['contact_details'] ) ;
 		$view->getEnvironment()->addGlobal( 'Carbon', new Carbon\Carbon ) ;
+		$view->getEnvironment()->addGlobal( 'User', new \App\Models\User ) ;
+
+		$view->getEnvironment()->addGlobal( 'route_name', $path) ;
 
 	    return $view;
 	    
@@ -122,7 +129,9 @@
 
 	//Binding routes to controllers
 	//
+	$container['ActivationController'] 		= function( $container ) { return new \App\Controllers\ActivationController( $container ) ; } ;
 	$container['FrontController'] 		= function( $container ) { return new \App\Controllers\FrontController( $container ) ; } ;
+	$container['LevelController'] 		= function( $container ) { return new \App\Controllers\LevelController( $container ) ; } ;
 	
 	$container['HomeController'] 		= function( $container ) { return new \App\Controllers\HomeController( $container ) ; } ;
 	$container['ContactController'] 	= function( $container ) { return new \App\Controllers\ContactController ( $container ) ; } ;
@@ -131,7 +140,20 @@
 
 	//CSRF binding.
 	//
-	$container['csrf'] 					= function( $container ) { return new \Slim\Csrf\Guard ; } ;
+	$container['csrf'] 					= function( $container ) { 
+
+	    $guard 							= new \Slim\Csrf\Guard();
+	    
+	    $guard->setFailureCallable(function ($request, $response, $next) {
+
+	        $request 					= $request->withAttribute( "csrf_status", false ) ;
+	        return $next( $request, $response ) ;
+
+	    });
+
+	    return $guard ;
+
+	} ;
 
 
 	$container['mailer'] 				= function ($container) {
