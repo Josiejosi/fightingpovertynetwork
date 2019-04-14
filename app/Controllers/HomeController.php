@@ -63,17 +63,17 @@
 
 			$upgrade_amount 					= IncomingAmount::whereReceiverId( $user_id )->whereStatus( 2 )->get()->sum('amount') ;
 
-			if ( $upgrade_amount == 400 ) {
+			if ( $upgrade_amount >= 400 && $upgrade_amount < 800 ) {
 
 				$this->Upgrader->MoveLevelTwo( $user_id ) ;
 				$this->flash->addMessage( 'success', 'Successfully upgraded to level 2.' ) ;
 
-			} else if ( $upgrade_amount == 800 ) {
+			} else if ( $upgrade_amount >= 1600 && $upgrade_amount < 4800 ) {
 
 				$this->Upgrader->MoveLevelTwo( $user_id ) ;
 				$this->flash->addMessage( 'success', 'Successfully upgraded to level 3.' ) ;
 
-			} else if ( $upgrade_amount == 1600 ) {
+			} else if ( $upgrade_amount >= 4800 ) {
 
 				$this->Upgrader->MoveLevelTwo( $user_id ) ;
 				$this->flash->addMessage( 'success', 'Successfully upgraded to level 4.' ) ;

@@ -3,6 +3,8 @@
 	use App\Models\UserLevel ;
 	use App\Models\UserCompletedLevel ;
 
+    use App\Classes\Queue ;
+
 	class Level extends Helpers {
 
         public function getLevel() {
@@ -22,6 +24,25 @@
 
             }
             return $level_id ;
+        }
+
+        public function upgradeLevel( $user_id, $level ) {
+
+            if ( UserLevel::whereUserId( $user_id )->count() > 0 ) {
+
+                $level                  = UserLevel::whereUserId( $user_id )->first() ;
+                $level->delete() ;
+
+            }
+
+            UserLevel::create([
+
+                'level_id'              => (int) $level, 
+                'user_id'               => (int) $user_id,
+
+            ]) ;
+
+
         }
 
         public function currentLevel() {

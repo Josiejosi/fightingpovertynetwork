@@ -174,7 +174,7 @@
 	        ]) ;
 
 
-	        if ( Downliner::whereUserId( $upliner->id )->count() < 3 ) {
+	        if ( Downliner::whereUserId( $upliner->id )->count() < 2 ) {
 
 		        $this->addDownliner( $user->id, $upliner->id ) ;
 
@@ -188,7 +188,7 @@
 
 		    		$downliner_id 				= $downliner->downliner_id ;
 
-		    		if ( Downliner::whereUserId( $downliner_id )->count() < 3 ) {
+		    		if ( Downliner::whereUserId( $downliner_id )->count() < 2 ) {
 
 		    			$this->addDownliner( $user->id, $downliner_id ) ;
 
@@ -197,6 +197,32 @@
 		    			break ;
 
 		    		}
+
+		    	}
+
+		    	if ( $level_one_found == false ) {
+
+			    	foreach ( $downliners as $downliner ) {
+
+			    		$downliner_id 				= $downliner->downliner_id ;
+
+			    		$third_downliners 			= Downliner::whereUserId( $downliner_id )->get() ;
+
+			    		foreach ( $third_downliners as $third ) {
+
+			    			$downliner_id 			= $third->downliner_id ;
+
+				    		if ( Downliner::whereUserId( $downliner_id )->count() < 2 ) {
+
+				    			$this->addDownliner( $user->id, $downliner_id ) ;
+				    			break ;
+
+				    		}
+
+			    		}
+
+
+			    	}
 
 		    	}
 
