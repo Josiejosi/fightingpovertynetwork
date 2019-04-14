@@ -101,6 +101,7 @@
 			return $this->view->render( $response, 'app/member.twig', $data ) ;
 		}
 
+
 		public function upliner( $request, $response, $args  ) {
 
 			$user_id 							= $this->auth->id() ;

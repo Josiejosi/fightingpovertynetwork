@@ -79,6 +79,7 @@
 		$this->get( '/edit/details/{id}', 			'AdminController:user' )->setName('user') ;
 		$this->post( '/edit/details', 				'AdminController:postUser' ) ;
 		$this->get( '/edit/account/{id}', 			'AdminController:account' )->setName('account') ;
+		$this->get( '/delete/account/{id}', 		'AdminController:member_delete' )->setName('member_delete') ;
 		$this->post( '/edit/account', 				'AdminController:postAccount' ) ;
 		$this->get( '/order/delete/{id}', 			'AdminController:orderDelete' ) ;
 

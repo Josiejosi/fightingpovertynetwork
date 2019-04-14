@@ -270,5 +270,15 @@
 
 		}
 
+		public function member_delete( $request, $response, $args  ) {
+
+			$user 								= User::find( $args[ "id" ] ) ;
+
+			$user->delete() ;
+
+			$this->flash->addMessage( 'info', 'Member removed.' ) ;
+			return $response->withRedirect( $this->router->pathFor( 'dashboard' ) ) ;
+		}
+
 
 	}
