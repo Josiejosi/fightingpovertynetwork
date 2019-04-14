@@ -1,0 +1,37 @@
+{% extends "app.twig" %}
+
+{% block content %}
+
+	<div class="row">
+
+		<div class="col-md-12">
+
+			<div class="card">
+
+				<div class="content">
+
+					<div class="card-header m-2"><h5>All Incoming</h5></div>
+
+					<div class="card-body m-2">
+
+						<div class="row">
+
+							<div class="col-sm-12">
+					
+								{% include( 'partials/incoming.twig' ) %}
+
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+{% endblock %}

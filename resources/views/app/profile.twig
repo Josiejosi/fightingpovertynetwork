@@ -1,16 +1,16 @@
-{% extends "master.twig" %}
+{% extends "app.twig" %}
 
 {% block content %}
 
 	<div class="row">
-		<div class="col-sm-6 col-sm-offset-3">
-			<div class="panel panel-default">
+		<div class="col-md-12">
+			<div class="card">
 
 				<div class="panel-heading">
 					<h4>My Profile</h4>
 				</div>
 
-				<div class="panel-body">
+				<div class="card-body">
 				
 					<form action="{{ base_url() }}/profile" method="POST" class="form-horizontal" role="form" autocomplete="off">
 
@@ -54,7 +54,7 @@
 						<div class="form-group {{ errors.phone_number ? ' has-error' : '' }}">
 							<label class="control-label col-sm-4" for="phone_number">Phone Number :</label>
 							<div class="col-sm-8">
-								<input type="text" name="phone_number" id="phone_number" class="form-control" value="{{ auth.user.phone_number }}" title="">
+								<input type="text" name="phone_number" id="phone_number" class="form-control" value="{{ auth.user.phone }}" title="">
 							</div>
 							{% if ( errors.phone_number ) %}	
 								<span class="text-danger help-block text-center">{{ errors.phone_number | first }}</span>
@@ -63,7 +63,7 @@
 					
 				
 						<div class="form-group">
-							<div class="col-sm-10 col-sm-offset-2">
+							<div class="col-md-6 offset-md-3">
 								<button type="submit" class="btn btn-danger">Update</button>
 							</div>
 						</div>

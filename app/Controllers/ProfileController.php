@@ -24,7 +24,7 @@
 
 				'name'							=> v::notEmpty()->alpha(),
 				'surname'						=> v::notEmpty()->alpha(),
-				'phone_number'					=> v::notEmpty()->numeric()->phoneExists(),
+				'phone_number'					=> v::notEmpty()->numeric(),
 
 			]) ;
 
@@ -40,7 +40,7 @@
 				'email'							=> $request->getParam( 'email' ),
 				'name'							=> $request->getParam( 'name' ),
 				'surname'						=> $request->getParam( 'surname' ),
-				'phone_number'					=> $request->getParam( 'phone_number' ),
+				'phone'							=> $request->getParam( 'phone_number' ),
 			]) ;
 
 			if ( $user )

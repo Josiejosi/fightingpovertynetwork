@@ -10,6 +10,7 @@
 	use App\Models\Account ;
 	use App\Models\UserLevel ;
 	use App\Models\Downliner ;
+	use App\Models\IncomingAmount ;
 	use App\Models\UserCompletedLevel ;
 
 	use App\Classes\Auth ;
@@ -173,19 +174,34 @@
 	        ]) ;
 
 
-	        Downliner::create([
+	        if ( Downliner::whereUserId( $upliner->id )->count() < 3 ) {
 
-		        'user_id'						=> $upliner->id,
-		        'downliner_id' 					=> $user->id,
+		        $this->addDownliner( $user->id, $upliner->id ) ;
 
-	        ]) ;
+		    } else {
 
-            Upliner::create([
+		    	$downliners 					= Downliner::whereUserId( $upliner->id )->get() ;
 
-                'user_id'               		=> $user->id,
-                'upliner_id'            		=> $upliner->id,
+		    	$level_one_found 				= false ;
 
-            ]) ;
+		    	foreach ( $downliners as $downliner ) {
+
+		    		$downliner_id 				= $downliner->downliner_id ;
+
+		    		if ( Downliner::whereUserId( $downliner_id )->count() < 3 ) {
+
+		    			$this->addDownliner( $user->id, $downliner_id ) ;
+
+		    			$level_one_found 		= true ;
+
+		    			break ;
+
+		    		}
+
+		    	}
+
+		    }
+
 
 			$body 								= "Welcome " . $request->getParam( 'name' ) . "<br><br>"
 												. "Your account was created successfully, Login Details: <br>"
@@ -427,6 +443,33 @@
 				return $response->withRedirect( $this->router->pathFor( 'home' ) ) ;
 
 			}
+
+		}
+
+		private function addDownliner( $user_id, $upliner_id ) {
+
+		        Downliner::create([
+
+			        'user_id'					=> $upliner_id,
+			        'downliner_id' 				=> $user_id,
+
+		        ]) ;
+
+	            Upliner::create([
+
+	                'user_id'               	=> $user_id,
+	                'upliner_id'            	=> $upliner_id,
+
+	            ]) ;
+
+		        IncomingAmount::create([
+
+			        'amount' 					=> 200,
+			        'status' 					=> 0,
+			        'receiver_id'				=> $upliner_id,
+			        'sender_id' 				=> $user_id,
+
+		        ]) ;
 
 		}
 

@@ -27,9 +27,6 @@
 		$this->get( '/reset/{email_token}', 		'AuthController:reset_password' ) ;
 		$this->post( '/reset/password', 			'AuthController:postPasswordReset' ) ;
 
-		$this->get( '/add/fake/admin', 				'AuthController:fakeAdmin' ) ; //Remove after testing.
-		$this->get( '/add/levels', 					'LevelController:add' ) ; //Remove after testing.
-
 		$this->get( '/contact_us', 					'ContactController:index' )->setName('contact') ;
 		$this->post( '/contact_us', 				'ContactController:postContact' ) ;
 
@@ -46,7 +43,24 @@
 	$app->group( '', function() {
 
 		$this->get( '/activation', 					'ActivationController:index' )->setName('activation') ;
+
+		$this->get( '/incoming', 					'IncomingController:index' )->setName('incoming') ;
+		$this->get( '/order/pay/{id}', 				'IncomingController:pay' ) ;
+		$this->get( '/order/approve/{id}', 			'IncomingController:approve' ) ;
+
+		$this->get( '/outgoing', 					'OutgoingController:index' )->setName('outgoing') ;
+
 		$this->get( '/dashboard', 					'HomeController:index' )->setName('dashboard') ;
+		$this->get( '/member/details/{id}', 		'HomeController:member' ) ;
+
+		$this->get( '/upliners', 					'HomeController:upliner' )->setName('upliner') ;
+		$this->get( '/downliners', 					'HomeController:downliner' )->setName('downliner') ;
+
+		$this->get( '/account', 					'HomeController:account' )->setName('account') ;
+		$this->post( '/account', 					'HomeController:postAccount' ) ;
+
+		$this->get( '/structure', 					'HomeController:structure' )->setName('structure') ;
+		$this->get( '/member/structure', 			'HomeController:load_structure' ) ;
 
 		$this->get( '/profile', 					'ProfileController:index' )->setName('profile') ;
 		$this->post( '/profile', 					'ProfileController:postProfileUpdate' ) ;

@@ -71,6 +71,7 @@
 	
 	$container['HelpAuth'] 			= function( $container ) { return new \App\Classes\Auth( $container ) ; } ;
 	$container['Contact'] 			= function( $container ) { return new \App\Classes\Contact( $container ) ; } ;
+	$container['Level'] 			= function( $container ) { return new \App\Classes\Level( $container ) ; } ;
 
 	//Register our validation class as a global.
 	#
@@ -129,7 +130,10 @@
 
 	//Binding routes to controllers
 	//
-	$container['ActivationController'] 		= function( $container ) { return new \App\Controllers\ActivationController( $container ) ; } ;
+	$container['UpgradeController'] 	= function( $container ) { return new \App\Controllers\UpgradeController( $container ) ; } ;
+	$container['OutgoingController'] 	= function( $container ) { return new \App\Controllers\OutgoingController( $container ) ; } ;
+	$container['IncomingController'] 	= function( $container ) { return new \App\Controllers\IncomingController( $container ) ; } ;
+	$container['ActivationController'] 	= function( $container ) { return new \App\Controllers\ActivationController( $container ) ; } ;
 	$container['FrontController'] 		= function( $container ) { return new \App\Controllers\FrontController( $container ) ; } ;
 	$container['LevelController'] 		= function( $container ) { return new \App\Controllers\LevelController( $container ) ; } ;
 	

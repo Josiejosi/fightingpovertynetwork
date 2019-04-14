@@ -1,0 +1,56 @@
+{% extends "app.twig" %}
+
+{% block content %}
+
+	<div class="row">
+
+		<div class="col-md-12">
+
+			<div class="card">
+
+				<div class="content">
+
+					<div class="card-header m-2"><h5>My Downliners</h5></div>
+
+					<div class="card-body m-2">
+
+						<div class="row">
+
+							<div class="col-sm-12">
+					
+								<table class="table table-responsive table-inverse">
+
+									<tbody>
+
+										{% for downliner in downliners %}
+
+											{% set user = User.find( downliner.downliner_id ) %}
+
+											<tr>
+												<td><i class="fas fa-3x fa-user-graduate"></i></td>
+												<td>{{ user.name }} {{ user.surname }}</td>
+												<td>
+													<a href="/member/details/{{ downliner.downliner_id }}" class="btn btn-success btn-sm">Details</a>
+												</td>
+											</tr>
+										    
+										{% endfor %}
+
+									</tbody>
+								</table>
+
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+{% endblock %}

@@ -18,6 +18,8 @@
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
     <link href="/public/admin/css/themify-icons.css" rel="stylesheet">
 
+    {% block css %} {% endblock css %}
+
 </head>
 <body>
 
@@ -34,8 +36,8 @@
             <ul class="nav">
 
                 <li class="active"><a href="/dashboard"> <i class="fas fa-chart-line"></i> <p>Dashboard</p> </a> </li>
-                <li><a href="/sent"> <i class="far fa-money-bill-alt"></i> <p>Incoming</p> </a> </li>
-                <li><a href="/received"> <i class="far fa-money-bill-alt"></i> <p>Outgoing</p> </a> </li>
+                <li><a href="/incoming"> <i class="far fa-money-bill-alt"></i> <p>Incoming</p> </a> </li>
+                <li><a href="/outgoing"> <i class="far fa-money-bill-alt"></i> <p>Outgoing</p> </a> </li>
                 <li><a href="/downliners"> <i class="fas fa-sort-amount-down"></i> <p>Downliners</p> </a> </li>
                 <li><a href="/upliners"> <i class="fas fa-sort-amount-up"></i> <p>Upliners</p> </a> </li>
                 <li><a href="/structure"> <i class="fas fa-project-diagram"></i> <p>Structure</p> </a> </li>
@@ -114,6 +116,8 @@
 	<script src="/public/admin/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/public/admin/js/bootstrap-notify.js"></script>
     <script src="/public/admin/js/dashboard.js"></script>
+
+    {% block js %} {% endblock js %}
 
 
 </html>

@@ -12,7 +12,7 @@
 	                        <div class="icon-big icon-warning text-center"> <i class="fas fa-wallet"></i> </div>
 	                    </div>
 	                    <div class="col-xs-7">
-	                        <div class="numbers"><p>SENT</p> R0.00</div>
+	                        <div class="numbers"><p>SENT</p> R {{ outgoing_sum }}</div>
 	                    </div>
 	                </div>
 	            </div>
@@ -27,7 +27,7 @@
 	                        <div class="icon-big icon-success text-center"> <i class="fas fa-wallet"></i> </div>
 	                    </div>
 	                    <div class="col-xs-7">
-	                        <div class="numbers"><p>RECEIVED</p> R0.00</div>
+	                        <div class="numbers"><p>RECEIVED</p> R {{ incoming_sum }}</div>
 	                    </div>
 	                </div>
 	            </div>
@@ -42,7 +42,7 @@
 	                        <div class="icon-big icon-danger text-center"> <i class="fas fa-wallet"></i> </div>
 	                    </div>
 	                    <div class="col-xs-7">
-	                        <div class="numbers"><p>LEVEL</p> 1</div>
+	                        <div class="numbers"><p>LEVEL</p> {{ currentLevel.level }}</div>
 	                    </div>
 	                </div>
 	            </div>
@@ -103,9 +103,9 @@
 
 						<div class="row">
 
-							<div class="col-sm-6 col-sm-offset-3">
+							<div class="col-sm-12">
 					
-								<h6 class="text-center">Nothing new mate!</h6>
+								{% include( 'partials/incoming.twig' ) %}
 
 							</div>
 
@@ -134,9 +134,9 @@
 
 						<div class="row">
 
-							<div class="col-sm-6 col-sm-offset-3">
+							<div class="col-md-12">
 					
-								<h6 class="text-center">Nothing new mate!</h6>
+								{% include( 'partials/outgoing.twig' ) %}
 
 							</div>
 
