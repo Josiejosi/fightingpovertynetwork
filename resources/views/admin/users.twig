@@ -9,7 +9,39 @@
 				<div class="card-header"> <h4>Users</h4> </div>
 
 				<div class="card-body">
+
+					<table class="table table-responsive table-inverse">
+
+						<thead>
+							<tr>
+								<th>Username</th>
+								<th>Name</th>
+								<th>Email</th>
+								<th>Phone</th>
+								<th>Join Date</th>
+								<th><i class="fas fa-cog"></i></th>
+							</tr>
+						</thead>
+						<tbody>
 				
+							{% for user in users %}
+
+								<tr>
+									<td>{{ user.username }}</td>
+									<td>{{ user.name }} {{ user.surname }}</td>
+									<td>{{ user.email }}</td>
+									<td>{{ user.phone }}</td>
+									<td>{{ user.create_at.diffForHumans() }}</td>
+									<td>
+										<a href="/edit/details/{{ user.id }}" class="btn btn-success btn-sm">Details</a>
+										<a href="/edit/account/{{ user.id }}" class="btn btn-success btn-sm">Account</a>
+									</td>
+								</tr>
+							    
+							{% endfor %}
+
+						</tbody>
+					</table>
 
 				</div>
 

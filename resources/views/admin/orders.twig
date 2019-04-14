@@ -9,7 +9,39 @@
 				<div class="card-header"> <h4>Orders</h4> </div>
 
 				<div class="card-body">
+
+					<table class="table table-responsive table-inverse">
+
+						<thead>
+							<tr>
+								<th>Downliner</th>
+								<th>Upliner</th>
+								<th>Amount</th>
+								<th>Join Date</th>
+								<th><i class="fas fa-cog"></i></th>
+							</tr>
+						</thead>
+						<tbody>
 				
+							{% for order in orders %}
+
+								{% set sender = User.find( order.sender_id ) %}
+								{% set receiver = User.find( order.receiver_id ) %}
+
+								<tr>
+									<td>{{ sender.name }} {{ sender.surname }}</td>
+									<td>{{ receiver.name }} {{ receiver.surname }}</td>
+									<td>R {{ order.amount }}</td>
+									<td>{{ user.create_at.diffForHumans() }}</td>
+									<td>
+										<a href="/order/delete/{{ order.id }}" class="btn btn-success btn-sm">Delete</a>
+									</td>
+								</tr>
+							    
+							{% endfor %}
+
+						</tbody>
+					</table>
 
 				</div>
 

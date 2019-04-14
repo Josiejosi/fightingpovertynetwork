@@ -57,6 +57,35 @@
 
 		}
 
+		public function upgrade( $request, $response ) {
+
+			$user_id 							= $this->auth->id() ;
+
+			$upgrade_amount 					= IncomingAmount::whereReceiverId( $user_id )->whereStatus( 2 )->get()->sum('amount') ;
+
+			if ( $upgrade_amount == 400 ) {
+
+				$this->Upgrader->MoveLevelTwo( $user_id ) ;
+				$this->flash->addMessage( 'success', 'Successfully upgraded to level 2.' ) ;
+
+			} else if ( $upgrade_amount == 800 ) {
+
+				$this->Upgrader->MoveLevelTwo( $user_id ) ;
+				$this->flash->addMessage( 'success', 'Successfully upgraded to level 3.' ) ;
+
+			} else if ( $upgrade_amount == 1600 ) {
+
+				$this->Upgrader->MoveLevelTwo( $user_id ) ;
+				$this->flash->addMessage( 'success', 'Successfully upgraded to level 4.' ) ;
+
+			} else {
+				$this->flash->addMessage( 'info', 'You dont meet the minimum requirements to upgrade.' ) ;
+			}
+
+			
+			return $response->withRedirect( $this->router->pathFor( 'dashboard' ) ) ;
+		}
+
 
 		public function member( $request, $response, $args  ) {
 

@@ -53,6 +53,8 @@
 		$this->get( '/dashboard', 					'HomeController:index' )->setName('dashboard') ;
 		$this->get( '/member/details/{id}', 		'HomeController:member' ) ;
 
+		$this->get( '/upgrade', 					'HomeController:upgrade' )->setName('upgrade') ;
+
 		$this->get( '/upliners', 					'HomeController:upliner' )->setName('upliner') ;
 		$this->get( '/downliners', 					'HomeController:downliner' )->setName('downliner') ;
 
@@ -67,6 +69,18 @@
 
 		$this->get( '/password/update', 			'ProfileController:password_update' )->setName('password_update') ;
 		$this->post( '/password/update', 			'ProfileController:postPasswordUpdate' ) ;
+
+		//Admin Controller.
+		//
+		$this->get( '/admin', 						'AdminController:admin' )->setName('admin') ;
+		$this->post( '/admin', 						'AdminController:postAdmin' ) ;
+		$this->get( '/users', 						'AdminController:users' )->setName('users') ;
+		$this->get( '/orders', 						'AdminController:orders' )->setName('orders') ;
+		$this->get( '/edit/details/{id}', 			'AdminController:user' )->setName('user') ;
+		$this->post( '/edit/details', 				'AdminController:postUser' ) ;
+		$this->get( '/edit/account/{id}', 			'AdminController:account' )->setName('account') ;
+		$this->post( '/edit/account', 				'AdminController:postAccount' ) ;
+		$this->get( '/order/delete/{id}', 			'AdminController:orderDelete' ) ;
 
 		$this->get( '/logout', 						'AuthController:logout' )->setName('logout') ;
 
