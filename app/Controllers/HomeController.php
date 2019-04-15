@@ -70,12 +70,12 @@
 
 			} else if ( $upgrade_amount >= 1600 && $upgrade_amount < 4800 ) {
 
-				$this->Upgrader->MoveLevelTwo( $user_id ) ;
+				$this->Upgrader->MoveLevelThree( $user_id ) ;
 				$this->flash->addMessage( 'success', 'Successfully upgraded to level 3.' ) ;
 
 			} else if ( $upgrade_amount >= 4800 ) {
 
-				$this->Upgrader->MoveLevelTwo( $user_id ) ;
+				$this->Upgrader->MoveLevelFour( $user_id ) ;
 				$this->flash->addMessage( 'success', 'Successfully upgraded to level 4.' ) ;
 
 			} else {
