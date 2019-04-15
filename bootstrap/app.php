@@ -65,6 +65,17 @@
 
 	$container['db'] 				= function( $container ) use ( $capsule ) { return $capsule ; } ;
 
+/*	$container['errorHandler'] = function ($container) {
+	    return function ($request, $response, $exception) use ($container) {
+	        //file_put_contents( __DIR__ . '/../storage/log/' , print_r($exception, true) . ' ');
+	        return $response;
+	    };
+	};
+
+	$container['phpErrorHandler'] = function ($container) {
+	    return $container['errorHandler'];
+	};*/
+
 	//Auth class binding.
 	//
 	$container['auth'] 				= function( $container ) { return new \App\Auth\Auth ; } ;
@@ -122,6 +133,7 @@
 		$view->getEnvironment()->addGlobal( 'contact_details', $container['settings']['contact_details'] ) ;
 		$view->getEnvironment()->addGlobal( 'Carbon', new Carbon\Carbon ) ;
 		$view->getEnvironment()->addGlobal( 'User', new \App\Models\User ) ;
+		$view->getEnvironment()->addGlobal( 'Downliner', new \App\Models\Downliner ) ;
 
 		$view->getEnvironment()->addGlobal( 'route_name', $path) ;
 

@@ -64,7 +64,7 @@
 				'email'							=> v::notEmpty()->email(),
 				'name'							=> v::notEmpty()->alpha(),
 				'surname'						=> v::notEmpty()->alpha(),
-				'phone_number'					=> v::notEmpty()->numeric()->phoneExists(),
+				'phone_number'					=> v::notEmpty()->numeric(),
 				'country'						=> v::notEmpty(),
 				'bank'							=> v::notEmpty(),
 				'account_number'				=> v::notEmpty(),

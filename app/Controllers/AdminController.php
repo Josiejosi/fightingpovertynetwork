@@ -272,12 +272,35 @@
 
 		public function member_delete( $request, $response, $args  ) {
 
-			$user 								= User::find( $args[ "id" ] ) ;
+			try {
 
-			$user->delete() ;
+				if ( UserCompletedLevel::whereUserId( $args[ "id" ] )->count() > 0 ) {
+					foreach ( UserCompletedLevel::whereUserId( $args[ "id" ] )->get() as $level )
+						$level->delete() ;
+				}
+
+				if ( Upliner::whereUserId( $args[ "id" ] )->count() > 0 ) {
+					foreach ( Upliner::whereUserId( $args[ "id" ] )->get() as $upliner )
+						$upliner->delete() ;
+				}
+				if ( Downliner::whereUserId( $args[ "id" ] )->count() > 0 ) {
+					foreach ( Downliner::whereUserId( $args[ "id" ] )->get() as $upliner )
+						$downliner->delete() ;
+				}
+				if ( UserLevel::whereUserId( $args[ "id" ] )->count() > 0 ) {
+					( UserLevel::whereUserId( $args[ "id" ] )->first() )->delete() ;
+				}
+				if ( Account::whereUserId( $args[ "id" ] )->count() > 0 ) {
+					( Account::whereUserId( $args[ "id" ] )->first() )->delete() ;
+				}
+				( User::find( $args[ "id" ] ) )->delete() ;
+				
+			} catch (Exception $e) {
+				return $response->withRedirect( $this->router->pathFor( 'users' ) ) ;
+			}
 
 			$this->flash->addMessage( 'info', 'Member removed.' ) ;
-			return $response->withRedirect( $this->router->pathFor( 'dashboard' ) ) ;
+			return $response->withRedirect( $this->router->pathFor( 'users' ) ) ;
 		}
 
 
