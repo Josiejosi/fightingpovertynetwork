@@ -143,6 +143,7 @@
 
 	//Binding routes to controllers
 	//
+	$container['CronController'] 		= function( $container ) { return new \App\Controllers\CronController( $container ) ; } ;
 	$container['AdminController'] 		= function( $container ) { return new \App\Controllers\AdminController( $container ) ; } ;
 	$container['UpgradeController'] 	= function( $container ) { return new \App\Controllers\UpgradeController( $container ) ; } ;
 	$container['OutgoingController'] 	= function( $container ) { return new \App\Controllers\OutgoingController( $container ) ; } ;
