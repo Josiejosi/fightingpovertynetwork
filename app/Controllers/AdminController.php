@@ -284,7 +284,7 @@
 						$upliner->delete() ;
 				}
 				if ( Downliner::whereUserId( $args[ "id" ] )->count() > 0 ) {
-					foreach ( Downliner::whereUserId( $args[ "id" ] )->get() as $upliner )
+					foreach ( Downliner::whereUserId( $args[ "id" ] )->get() as $downliner )
 						$downliner->delete() ;
 				}
 				if ( UserLevel::whereUserId( $args[ "id" ] )->count() > 0 ) {
