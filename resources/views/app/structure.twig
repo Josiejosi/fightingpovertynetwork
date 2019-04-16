@@ -30,8 +30,11 @@
 							<div class="col-sm-12">
 
                                 <ul id="organisation">
+                                    {% set level = Level.where( 'user_id', auth.user.id ).first() %}
 
-                                    <li>{{ auth.user.name }} {{ auth.user.surname }}<br/><span class='title'>HEAD</span>
+                                    <li>{{ auth.user.name }} {{ auth.user.surname }}
+                                        <br/><span class='title'>HEAD</span>
+                                        <br/><span class='title'><small>Level {{ level.level_id }}</small></span>
      
                                         <ul>
 
@@ -42,8 +45,11 @@
                                                 {% for first in downliners %}
 
                                                     {% set user = User.find( first.downliner_id ) %}
+                                                    {% set level = Level.where( 'user_id', first.downliner_id ).first() %}
 
-                                                    <li>{{ user.name }} {{ user.surname }}<br/><span class='title'>R 200</span>
+                                                    <li>{{ user.name }} {{ user.surname }}
+                                                        <br/><span class='title'>R 200</span>
+                                                        <br/><span class='title'><small>Level {{ level.level_id }}</small></span>
 
                                                         <!-- second level -->
 
@@ -55,8 +61,11 @@
                                                             {% for second in downliners %}
 
                                                                 {% set user = User.find( second.downliner_id ) %}
+                                                                {% set level = Level.where( 'user_id', second.downliner_id ).first() %}
 
-                                                                <li>{{ user.name }} {{ user.surname }}<br/><span class='title'>R 400</span>
+                                                                <li>{{ user.name }} {{ user.surname }}
+                                                                    <br/><span class='title'>R 400</span>
+                                                                    <br/><span class='title'><small>Level {{ level.level_id }}</small></span>
 
                                                                     <!-- Third Level -->
 
@@ -68,8 +77,36 @@
                                                                         {% for third in downliners %}
 
                                                                             {% set user = User.find( third.downliner_id ) %}
+                                                                            {% set level = Level.where( 'user_id', third.downliner_id ).first() %}
 
-                                                                            <li>{{ user.name }} {{ user.surname }}<br/><span class='title'>R 800</span></li>
+                                                                            <li>{{ user.name }} {{ user.surname }}
+                                                                                <br/><span class='title'>R 800</span>
+                                                                                 <br/><span class='title'><small>Level {{ level.level_id }}</small></span>
+
+                                                                    <!-- Forth Level -->
+
+                                                                    {% if ( Downliner.whereUserId( third.downliner_id ).count() |length > 0 ) %}
+                                                                        <ul>
+
+                                                                        {% set downliners = Downliner.whereUserId( third.downliner_id ).get() %}
+
+                                                                        {% for forth in downliners %}
+
+                                                                            {% set user = User.find( forth.downliner_id ) %}
+                                                                            {% set level = Level.where( 'user_id', third.downliner_id ).first() %}
+
+                                                                            <li>{{ user.name }} {{ user.surname }}
+                                                                                <br/><span class='title'>R 1600</span>
+                                                                                 <br/><span class='title'><small>Level {{ level.level_id }}</small></span>
+
+                                                                            </li>
+
+                                                                        {% endfor %}
+                                                                        </ul>
+
+                                                                    {% endif %} 
+
+                                                                            </li>
 
                                                                         {% endfor %}
                                                                         </ul>

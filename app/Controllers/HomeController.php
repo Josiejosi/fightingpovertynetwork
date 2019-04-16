@@ -38,11 +38,14 @@
 	    	$incoming_sum 						= IncomingAmount::whereReceiverId( $user_id )->whereStatus( 2 )->get()->sum('amount') ;
 	    	$outgoing_sum 						= IncomingAmount::whereSenderId( $user_id )->whereStatus( 2 )->get()->sum('amount') ;
 
+	    	$user_level 						= UserLevel::whereUserId($user_id)->first() ;
+
 			$data 								= [
 
 				'title' 						=> 'Home',
 
 				'currentLevel'              	=> $currentLevel,
+				'user_level'              		=> $user_level,
 
 	        	'outgoing' 						=> $outgoing, 
 	        	'incoming' 						=> $incoming ,

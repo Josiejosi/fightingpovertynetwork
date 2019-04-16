@@ -134,6 +134,7 @@
 		$view->getEnvironment()->addGlobal( 'Carbon', new Carbon\Carbon ) ;
 		$view->getEnvironment()->addGlobal( 'User', new \App\Models\User ) ;
 		$view->getEnvironment()->addGlobal( 'Downliner', new \App\Models\Downliner ) ;
+		$view->getEnvironment()->addGlobal( 'Level', new \App\Models\UserLevel ) ;
 
 		$view->getEnvironment()->addGlobal( 'route_name', $path) ;
 
