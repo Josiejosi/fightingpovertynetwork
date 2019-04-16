@@ -70,7 +70,7 @@
 		$this->get( '/password/update', 			'ProfileController:password_update' )->setName('password_update') ;
 		$this->post( '/password/update', 			'ProfileController:postPasswordUpdate' ) ;
 
-		//Admin Controller.
+		//Admin Controller.  
 		//
 		$this->get( '/admin', 						'AdminController:admin' )->setName('admin') ;
 		$this->post( '/admin', 						'AdminController:postAdmin' ) ;
@@ -82,6 +82,9 @@
 		$this->get( '/delete/account/{id}', 		'AdminController:member_delete' )->setName('member_delete') ;
 		$this->post( '/edit/account', 				'AdminController:postAccount' ) ;
 		$this->get( '/order/delete/{id}', 			'AdminController:orderDelete' ) ;
+
+		$this->get( '/admin/downliners', 			'AdminController:downliners' )->setName('admin_downliners') ;
+		$this->get( '/delete/downliner/{id}', 		'AdminController:postDeleteDownliners' ) ;
 
 		$this->get( '/logout', 						'AuthController:logout' )->setName('logout') ;
 

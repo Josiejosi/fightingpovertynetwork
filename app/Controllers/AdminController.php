@@ -195,6 +195,31 @@
 			return $this->view->render( $response, 'admin/details.twig', $data ) ;
 		}
 
+		public function downliners( $request, $response ) {
+
+			$users 								= User::whereRole(1)->get() ;
+
+			$data 								= [
+
+				'title' 						=> 'Member Details',
+				'users'              			=> $users,
+	            
+			] ;
+
+			return $this->view->render( $response, 'admin/downliners.twig', $data ) ;
+		}
+
+		public function postDeleteDownliners( $request, $response, $args ) {
+
+			$user 								= Downliner::find( $args[ "id" ] ) ;
+
+			$user->delete() ;
+
+			$this->flash->addMessage( 'warning', 'Successfully removed.' ) ;
+			return $response->withRedirect( $this->router->pathFor( 'admin_downliners' ) ) ;			
+
+		}
+
 		public function postUser( $request, $response ) {
 
 			$validation 						= $this->validator->validate( $request, [
