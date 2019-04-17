@@ -143,7 +143,7 @@
 
 			if ( $auth ) {
 
-				$this->flash->addMessage( 'success', 'Successfully logged in.' ) ;
+				$this->flash->addMessage( 'success', 'Admin Account Created Successfully.' ) ;
 
 				return $response->withRedirect( $this->router->pathFor( 'admin' ) ) ;
 
@@ -290,7 +290,7 @@
 
 			$order->delete() ;
 
-			$this->flash->addMessage( 'success', 'Banking Details successfully updated.' ) ;
+			$this->flash->addMessage( 'success', 'Order Deleted Successfully.' ) ;
 			return $response->withRedirect( $this->router->pathFor( 'users' ) ) ;
 
 		}
@@ -326,6 +326,38 @@
 
 			$this->flash->addMessage( 'info', 'Member removed.' ) ;
 			return $response->withRedirect( $this->router->pathFor( 'users' ) ) ;
+		}
+
+		public function user_password( $request, $response, $args ) {
+
+			$user 								= User::find( $args[ "id" ] ) ;
+
+			$data 								= [
+
+				'title' 						=> 'Change Password',
+				'user'              			=> $user,
+	            
+			] ;
+
+			return $this->view->render( $response, 'admin/password.twig', $data ) ;
+
+		}
+
+		public function change_password( $request, $response ) {
+
+			$id									= $request->getParam( 'id' ) ;
+			$password							= $request->getParam( 'password' ) ;
+
+			$user 								= User::find( $id ) ;
+
+			$user->update([
+				'password' 						=> password_hash( $password, PASSWORD_DEFAULT ),
+			]) ;
+
+			$this->flash->addMessage( 'info', 'Password Changed successfully.' ) ;
+			return $response->withRedirect( $this->router->pathFor( 'users' ) ) ;
+
+
 		}
 
 

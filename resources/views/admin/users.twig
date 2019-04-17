@@ -33,6 +33,7 @@
 									<td>{{ user.phone }}</td>
 									<td>{{ user.create_at.diffForHumans() }}</td>
 									<td>
+										<a href="/user/password/{{ user.id }}" class="btn btn-success btn-sm">Password</a>
 										<a href="/edit/details/{{ user.id }}" class="btn btn-success btn-sm">Details</a>
 										<a href="/edit/account/{{ user.id }}" class="btn btn-success btn-sm">Account</a>
 										<a href="/delete/account/{{ user.id }}" class="btn btn-danger btn-sm">Delete</a>

@@ -86,6 +86,9 @@
 		$this->get( '/admin/downliners', 			'AdminController:downliners' )->setName('admin_downliners') ;
 		$this->get( '/delete/downliner/{id}', 		'AdminController:postDeleteDownliners' ) ;
 
+		$this->get( '/user/password/{id}', 			'AdminController:user_password' )->setName('user_password') ;
+		$this->post( '/user/password', 				'AdminController:change_password' ) ;
+
 		$this->get( '/logout', 						'AuthController:logout' )->setName('logout') ;
 
 	})->add( new AuthMiddleware( $container ) ) ;
